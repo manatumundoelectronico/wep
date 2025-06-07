@@ -1,0 +1,401 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Mana Tu Mundo Electrónico</title>
+  <link rel="icon" href="icono.png"/>
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+  <style>
+    * { box-sizing: border-box; }
+    body {
+      font-family: 'Roboto', sans-serif;
+      margin: 0;
+      padding: 0;
+      background-color: #f5f5f5;
+    }
+    header {
+      background-color: #1a1a1a;
+      color: white;
+      padding: 20px;
+      text-align: center;
+    }
+    nav {
+      background-color: #333;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      align-items: center;
+      padding: 10px 20px;
+    }
+    nav a {
+      color: white;
+      padding: 10px;
+      text-decoration: none;
+    }
+    nav a:hover {
+      background-color: #555;
+    }
+    .cart-count {
+      background-color: red;
+      color: white;
+      padding: 2px 8px;
+      border-radius: 50%;
+      margin-left: 5px;
+    }
+    .hero {
+      background-color: #0077cc;
+      color: white;
+      padding: 60px 20px;
+      text-align: center;
+    }
+    .products {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 20px;
+      padding: 40px;
+    }
+    .product-card {
+      background: white;
+      padding: 20px;
+      border-radius: 8px;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+      text-align: center;
+    }
+    .product-card img {
+      max-width: 100%;
+      height: 150px;
+      object-fit: cover;
+    }
+    .product-card input {
+      width: 50px;
+      margin-top: 10px;
+    }
+    .product-card button {
+      margin-top: 10px;
+      background-color: #0077cc;
+      color: white;
+      border: none;
+      padding: 10px;
+      cursor: pointer;
+      border-radius: 5px;
+    }
+    .product-card button:hover {
+      background-color: #005fa3;
+    }
+    #carrito {
+      background-color: #ffffff;
+      padding: 20px;
+      margin: 20px;
+      border-radius: 8px;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    }
+    .carrito-item {
+      display: flex;
+      justify-content: space-between;
+      border-bottom: 1px solid #ccc;
+      padding: 10px 0;
+    }
+    .carrito-item button {
+      background-color: red;
+      color: white;
+      border: none;
+      padding: 4px 8px;
+      cursor: pointer;
+      border-radius: 4px;
+    }
+    .carrito-total {
+      text-align: right;
+      font-weight: bold;
+      margin-top: 10px;
+    }
+    #whatsapp-button {
+      background-color: #25d366;
+      color: white;
+      padding: 10px 15px;
+      border-radius: 5px;
+      text-decoration: none;
+      display: inline-block;
+      margin-top: 10px;
+    }
+    @media (max-width: 600px) {
+      nav {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+      .product-card input {
+        width: 100%;
+      }
+    }
+  
+#modal {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0,0,0,0.5);
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+}
+
+#modal.mostrar {
+  display: flex;
+}
+</style>
+</head>
+<body>
+  <header>
+    <h1><img src="icono.png" alt="Logo Mana Tu Mundo Electrónico" width="50"> Mana Tu Mundo Electrónico</h1>
+    <p>Tu tienda confiable de tecnología</p>
+  </header>
+<div style="text-align: center; margin-top: 10px;">
+  <strong><span id="fecha-hora"></span></strong>
+</div>
+
+<nav>
+  <div style="width: 100%; display: flex; justify-content: flex-end; gap: 20px;">
+    <a href="#inicio">Inicio</a>
+    <a href="#productos">Productos</a>
+    <a href="#carrito">Carrito <span class="cart-count" id="cart-count">0</span></a>
+  </div>
+</nav>
+
+
+
+
+   <center> <img src="Precios.jpg"width="1350" height="900"> </center>
+  
+  <div style="position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden; max-width: 100%; margin: auto;">
+  <iframe src="https://www.youtube.com/embed/mWdP_wDfy7M?si=roZ_yMzsPG1o4y0f"
+          style="position: absolute; top: 0; left: 0; width: 90%; height: 90%;"
+          frameborder="0"
+          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+          allowfullscreen
+          title="YouTube video player"
+          referrerpolicy="strict-origin-when-cross-origin">
+  </iframe>
+</div>
+<hr>
+ <marquee bgcolor="orange" direction="left">💸 Solo por Mayor 💸</marquee>
+<marquee bgcolor="orange" direction="right">💸 Envíos a Todo el País 💸</marquee>
+<marquee bgcolor="orange" direction="alternate">💸 Compra mínima $100.000 💸</marquee>
+
+ 
+    <hr>
+  <section class="products" id="productos">
+  <div class="product-card">
+    <img src="motog.png">
+    <h3>moto g24</h3>
+    <p>Capacidad de la batería 5000 mAh</p>
+    <strong>$1.600.000</strong><br>
+    <input type="number" min="1" value="1" id="qty-0">
+    <button onclick="agregarProducto('moto g24', 1600000, 0)">Agregar</button>
+    <button onclick="mostrarDetalles('moto g24', 'Batería: 5000 mAh, RAM: 4/8 GB, Resolución: 1920x1080, Almacenamiento: hasta 256 GB.')">Ver más</button>
+  </div>
+
+  <div class="product-card">
+    <img src="lenovo.JFIF">
+    <h3>Laptop lenovo</h3>
+    <p>pantalla 15,6 Pulgadas</p>
+    <strong>$450.000</strong><br>
+    <input type="number" min="1" value="1" id="qty-1">
+    <button onclick="agregarProducto('Laptop lenovo', 450000, 1)">Agregar</button>
+    <button onclick="mostrarDetalles('Laptop lenovo', 'Pantalla: 15,6&quot;,Disco duro:256 GB, CPU:Intel Core i5,RAM: 12 GB')">Ver más</button>
+  </div>
+
+  <div class="product-card">
+    <img src="f9.jpg">
+    <h3>Audífonos Bluetooth</h3>
+    <p>Alta fidelidad de audio</p>
+    <strong>$15.000</strong><br>
+    <input type="number" min="1" value="1" id="qty-2">
+    <button onclick="agregarProducto('Audífonos Bluetooth', 15000, 2)">Agregar</button>
+    <button onclick="mostrarDetalles('Audífonos Bluetooth', 'Bluetooth 5.0, Cancelación de ruido pasiva, Powerbank 2000 mAh, IPX5 resistente al agua')">Ver más</button>
+  </div>
+
+  <div class="product-card">
+    <img src="a24.JFIF">
+    <h3>Samsung a24</h3>
+    <p>Pantalla Full HD+ de 6,5 pulgadas</p>
+    <strong>$320.000</strong><br>
+    <input type="number" min="1" value="1" id="qty-3">
+    <button onclick="agregarProducto('Samsung a24', 320000, 3)">Agregar</button>
+    <button onclick="mostrarDetalles('Samsung a24', 'Pantalla 6.5&quot;, Cámara 50 MP, Procesador Octa-core, Batería de más de 2 días')">Ver más</button>
+  </div>
+
+  <div class="product-card">
+    <img src="negro.JFIF">
+    <h3>Audífonos</h3>
+    <p>Sonido de calidad</p>
+    <strong>$7.000</strong><br>
+    <input type="number" min="1" value="1" id="qty-4">
+    <button onclick="agregarProducto('Audífonos', 7000, 4)">Agregar</button>
+    <button onclick="mostrarDetalles('Audífonos', 'Comodidad, cable largo, graves mejorados, buena relación calidad-precio')">Ver más</button>
+  </div>
+
+  <div class="product-card">
+    <img src="apple.JFIF">
+    <h3>Laptop apple</h3>
+    <p>Alto rendimiento</p>
+    <strong>$1.450.000</strong><br>
+    <input type="number" min="1" value="1" id="qty-5">
+    <button onclick="agregarProducto('Laptop apple', 1450000, 5)">Agregar</button>
+    <button onclick="mostrarDetalles('Laptop apple', 'SSD, Tensión 100-240V, Temp. operativa 10-35 ºC, Almacenamiento seguro')">Ver más</button>
+  </div>
+
+  <div class="product-card">
+    <img src="16pro.png">
+    <h3>iphone 16 pro max</h3>
+    <p>Pantalla Super Retina XDR</p>
+    <strong>$1.700.000</strong><br>
+    <input type="number" min="1" value="1" id="qty-6">
+    <button onclick="agregarProducto('iphone 16 pro max', 1700000, 6)">Agregar</button>
+    <button onclick="mostrarDetalles('iphone 16 pro max', 'Pantalla OLED 6.9&quot;, 2868x1320, Dynamic Island, ProMotion hasta 120 Hz')">Ver más</button>
+  </div>
+
+  <div class="product-card">
+    <img src="rosado.JFIF">
+    <h3>Audífonos Bluetooth</h3>
+    <p>Controlador dinámico por Apple</p>
+    <strong>$25.000</strong><br>
+    <input type="number" min="1" value="1" id="qty-7">
+    <button onclick="agregarProducto('Audífonos Bluetooth', 25000, 7)">Agregar</button>
+    <button onclick="mostrarDetalles('Audífonos Bluetooth', 'Cancelación activa de ruido, Audio espacial, USB-C Lossless')">Ver más</button>
+  </div>
+
+  <div class="product-card">
+    <img src="s24.png">
+    <h3>Samsung s24 ultra</h3>
+    <p>Pantalla AMOLED de 6.8 pulgadas</p>
+    <strong>$640.000</strong><br>
+    <input type="number" min="1" value="1" id="qty-8">
+    <button onclick="agregarProducto('Samsung s24 ultra', 640000, 8)">Agregar</button>
+    <button onclick="mostrarDetalles('Samsung s24 ultra', 'Resolución: 3120x1440, Cámara: 200MP, RAM: 12GB, Batería: 5000 mAh')">Ver más</button>
+  </div>
+
+  <div class="product-card">
+    <img src="hp.JFIF">
+    <h3>Laptop hp</h3>
+    <p>Full HD, Core i5, 512GB SSD</p>
+    <strong>$1.200.000</strong><br>
+    <input type="number" min="1" value="1" id="qty-9">
+    <button onclick="agregarProducto('Laptop hp', 1200000, 9)">Agregar</button>
+    <button onclick="mostrarDetalles('Laptop hp', 'Pantalla 15,6&quot;, RAM 8GB, Video integrado, Windows 11')">Ver más</button>
+  </div>
+
+  <div class="product-card">
+    <img src="blanco.JFIF">
+    <h3>Auriculares</h3>
+    <p>Audio de alta definición</p>
+    <strong>$3.500</strong><br>
+    <input type="number" min="1" value="1" id="qty-10">
+    <button onclick="agregarProducto('Auriculares', 3500, 10)">Agregar</button>
+    <button onclick="mostrarDetalles('Auriculares', 'Alta definición de audio, comodidad y diseño liviano')">Ver más</button>
+  </div>
+
+  <div class="product-card">
+    <img src="xiomi14.JFIF">
+    <h3>Xiaomi redmi 14c</h3>
+    <p>Pantalla AMOLED 6.67", triple cámara</p>
+    <strong>$480.000</strong><br>
+    <input type="number" min="1" value="1" id="qty-11">
+    <button onclick="agregarProducto('Xiaomi redmi 14c', 480000, 11)">Agregar</button>
+    <button onclick="mostrarDetalles('Xiaomi redmi 14c', 'Cámaras 108+8+2 MP, 16 MP frontal, 5000 mAh, 256GB internos')">Ver más</button>
+  </div>
+</section>
+
+
+
+
+  <section id="carrito">
+    <h2>Carrito de Compras</h2>
+    <div id="carrito-items"></div>
+    <div class="carrito-total" id="carrito-total">Total: $0</div>
+    <a id="whatsapp-button" href="#" target="_blank">Finalizar compra por WhatsApp</a>
+	
+  </section>
+<hr>
+<div id="modal">
+  <div style="background:white; padding:20px; border-radius:10px; max-width:400px; box-shadow:0 0 10px rgba(0,0,0,0.3);">
+    <h3 id="modal-titulo"></h3>
+    <p id="modal-descripcion"></p>
+    <button onclick="cerrarModal()" style="margin-top:10px; background:#0077cc; color:white; border:none; padding:8px 12px; border-radius:5px; cursor:pointer;">Cerrar</button>
+  </div>
+</div>
+
+<script>
+  function mostrarDetalles(nombre, descripcion) {
+    document.getElementById("modal-titulo").textContent = nombre;
+    document.getElementById("modal-descripcion").textContent = descripcion;
+    document.getElementById("modal").classList.add("mostrar");
+  }
+
+  function cerrarModal() {
+    document.getElementById("modal").classList.remove("mostrar");
+  }
+</script>
+
+  <script>
+    let carrito = JSON.parse(localStorage.getItem('carrito')) || [];
+
+    function agregarProducto(nombre, precio, index) {
+      const cantidad = parseInt(document.getElementById('qty-' + index).value);
+      for (let i = 0; i < cantidad; i++) {
+        carrito.push({ nombre, precio });
+      }
+      actualizarCarrito();
+    }
+
+    function eliminarProducto(i) {
+      carrito.splice(i, 1);
+      actualizarCarrito();
+    }
+
+    function actualizarCarrito() {
+      const itemsDiv = document.getElementById('carrito-items');
+      const totalDiv = document.getElementById('carrito-total');
+      const countSpan = document.getElementById('cart-count');
+      const whatsappBtn = document.getElementById('whatsapp-button');
+      itemsDiv.innerHTML = '';
+      let total = 0;
+      let mensaje = "Hola! Quiero hacer una compra:%0A";
+
+      carrito.forEach((item, i) => {
+        total += item.precio;
+        itemsDiv.innerHTML += `
+          <div class="carrito-item">
+            <span>${item.nombre} - $${item.precio}</span>
+            <button onclick="eliminarProducto(${i})">Eliminar</button>
+          </div>
+        `;
+        mensaje += `• ${item.nombre} - $${item.precio}%0A`;
+      });
+
+      mensaje += `Total: $${total}`;
+      totalDiv.textContent = `Total: $${total}`;
+      countSpan.textContent = carrito.length;
+      whatsappBtn.href = `https://wa.me/5493804136571?text=${mensaje}`;
+
+      localStorage.setItem('carrito', JSON.stringify(carrito));
+    }
+
+    actualizarCarrito();
+  </script>
+
+<script>
+  function actualizarFechaHora() {
+    const ahora = new Date();
+    const opcionesFecha = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' };
+    const fecha = ahora.toLocaleDateString('es-AR', opcionesFecha);
+    const hora = ahora.toLocaleTimeString('es-AR');
+    document.getElementById("fecha-hora").textContent = `${hora} — Hoy es ${fecha}`;
+  }
+
+  actualizarFechaHora(); // Mostrar al cargar
+  setInterval(actualizarFechaHora, 1000); // Actualizar cada segundo
+</script>
+</body>
+</html>
